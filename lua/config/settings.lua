@@ -1,4 +1,26 @@
+vim.g.mapleader = " "
 vim.o.number = true
 vim.o.relativenumber = true
-vim.g.mapleader = " "
 vim.o.termguicolors = true
+vim.o.hlsearch = true
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.clipboard = "unnamedplus"
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.signcolumn = "yes"
+vim.o.colorcolumn = "120"
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.pumheight = 15
+vim.o.laststatus = 2
+vim.o.showcmd = false
+vim.o.showmode = false
+
+vim.g.netrw_banner = 0
+vim.g.netrw_browse_split = 4 -- open in prior window
+vim.g.netrw_altv = 1         -- change from left splitting to right splitting
+vim.g.netrw_liststyle = 3    -- tree style view in netrw
+vim.g.netrw_fastbrowse = 0
+vim.g.netrw_winsize = 17

@@ -35,6 +35,7 @@ map("n", "<esc>", ":noh<return><esc>", { silent = true })
 map({"v", "i", "s" }, "<C-c>", "<esc>", {})
 map({ "n", "v" }, "space", "<nop>", {})
 map({ "n", "v" }, "Q", "<nop>", {})
+map({ "n", "v" }, "q", "<nop>", {})
 map("n", "<leader>e", "<cmd>Lexplore<cr>", { desc = "Explorer" })
 
 -- borrado especial

@@ -1,16 +1,25 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  opts = {
-    options = {
-      globalstatus = true,
+    "nvim-lualine/lualine.nvim",
+    events = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+        options = {
+            globalstatus = true,
+        },
+        extensions = { "fugitive" },
+        sections = {
+            lualine_a = { { "mode", upper = true } },
+            lualine_b = { { "branch", icon = "" }, "db_ui#statusline" },
+            lualine_c = { { "filename", file_status = false, path = 1 } },
+            lualine_x = {
+                "diagnostics",
+                "diff",
+            },
+            lualine_y = { "filetype", "progress" },
+            lualine_z = { "location" },
+        },
+        inactive_winbar = {
+            lualine_c = { "filename" },
+        },
     },
-    sections = {
-      lualine_c = { { "filename", file_status = true, path = 1, } },
-      lualine_x = {},
-    },
-    inactive_winbar = {
-      lualine_c = { "filename" },
-    },
-  },
 }
