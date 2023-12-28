@@ -6,7 +6,7 @@ return {
       scope = {
          enabled = false
       },
-      indent = { char = "|" },
+      indent = { char = "|", repeat_linebreak = false },
    },
 }
 

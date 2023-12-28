@@ -1,6 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
-    events = "VeryLazy",
+    event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         options = {
@@ -13,7 +13,12 @@ return {
             lualine_c = { { "filename", file_status = false, path = 1 } },
             lualine_x = {
                 "diagnostics",
-                "diff",
+                {
+                    "diff",
+                    symbols = {
+                        added = " ", modified = " ", removed = " "
+                    }
+                },
             },
             lualine_y = { "filetype", "progress" },
             lualine_z = { "location" },

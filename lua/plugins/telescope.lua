@@ -3,6 +3,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
+        "nvim-telescope/telescope-ui-select.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
         {
             'nvim-telescope/telescope-fzf-native.nvim',
@@ -10,25 +11,7 @@ return {
         }
     },
     config = function()
-        require('telescope').setup({
-            defaults = {
-                layout_strategy = "flex",
-                layout_config = {
-                    prompt_position = "top",
-                },
-                sorting_strategy = "ascending",
-            },
-            extensions = {
-                fzf = {
-                    fuzzy = true,               -- false will only do exact matching
-                    override_generic_sorter = true, -- override the generic sorter
-                    override_file_sorter = true, -- override the file sorter
-                    case_mode = "smart_case",   -- or "ignore_case" or "respect_case"
-                    -- the default case_mode is "smart_case"
-                },
-            }
-        })
-        require('telescope').load_extension('fzf')
+        require "config.plugins.telescope"
     end,
     keys = {
         {
@@ -67,6 +50,24 @@ return {
             desc = "Telescope Git status",
         },
         {
+            "<leader>gc",
+            function()
+                require('telescope.builtin').git_commits()
+            end,
+            desc = "Telescope Find Files",
+        },
+        {
+            "<leader>fh",
+            function()
+                return require("telescope.builtin").find_files {
+                    prompt_title = " Hidden Files",
+                    hidden = true,
+                    file_ignore_patterns = {},
+                }
+            end,
+            desc = "Find hidden files"
+        },
+        {
             "<leader>ff",
             function()
                 require('telescope.builtin').find_files()
@@ -83,9 +84,24 @@ return {
         {
             "<leader>fb",
             function()
-                require("telescope").extensions.file_browser.file_browser({ path = "%:h:p", select_buffer = true })
+                require("telescope").extensions.file_browser.file_browser({
+                    path = "%:h:p",
+                    select_buffer = true
+                })
             end,
             desc = "Telescope file browser"
-        }
+        },
+        {
+            "<leader>fp",
+            function()
+                require("telescope").extensions.file_browser.file_browser({
+                    prompt_title = " Plugins",
+                    cwd = "~/.config/nvim-3/lua/plugins"
+                })
+            end,
+            desc = "Telescope file browser"
+        },
+        { "<leader>tn", "<cmd>Telescope todo-comments keywords=TODO,NOTE<cr>",    desc = "Todos" },
+        { "<leader>tf", "<cmd>Telescope todo-comments keywords=FIX,BUG<cr>", desc = "Todo Fix" },
     },
 }

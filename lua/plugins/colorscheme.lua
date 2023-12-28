@@ -1,9 +1,34 @@
 return {
-    "wuelnerdotexe/vim-enfocado",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme enfocado]])
-    end,
+    {
+        "craftzdog/solarized-osaka.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("solarized-osaka").setup({
+                transparent = true,
+                styles = {
+                    comments = {italic = true},
+                    keywords = {italic = true, bold = true},
+                    floats = "transparent",
+                }
+            })
+            require("solarized-osaka")._load("moon")
+        end
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('nightfox').setup({
+                options = {
+                    styles = {
+                        comments = "italic",
+                        keywords = "bold",
+                    }
+                }
+            })
+            -- vim.cmd("colorscheme nightfox")
+        end
+    }
 }

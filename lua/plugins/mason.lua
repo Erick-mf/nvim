@@ -1,12 +1,13 @@
 return {
     "williamboman/mason.nvim",
     cmd = "Mason",
-    events = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "jayp0521/mason-null-ls.nvim",
     },
-    opts = {
+    config = function()
+        require("mason").setup({
         ui = {
             border = "rounded",
             width = 0.7,
@@ -17,9 +18,7 @@ return {
                 package_uninstalled = "✗",
             },
         },
-    },
-    config = function(opts)
-        require("mason").setup(opts)
+        })
 
         local mason_lspconfig = require("mason-lspconfig")
         local mason_null_ls = require("mason-null-ls")
@@ -31,11 +30,12 @@ return {
                 "html",
                 "jsonls",
                 "volar",
-                "lemminx",
                 "lua_ls",
                 "marksman",
                 "tsserver",
                 "yamlls",
+                "phpactor",
+                "gopls",
             },
             automatic_installation = true,
         })

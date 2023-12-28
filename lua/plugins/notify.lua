@@ -1,14 +1,14 @@
+---@diagnostic disable: missing-fields
 return {
     "rcarriga/nvim-notify",
+    event = "VeryLazy",
     config = function()
-        local notify = require "notify"
-        -- this for transparency
-        notify.setup {
+        require("notify").setup({
             background_colour = "#000000",
             render = "compact",
             stages = "static",
-        }
+        })
         -- this overwrites the vim notify function
-        vim.notify = notify.notify
+        vim.notify = require("notify").notify
     end,
 }

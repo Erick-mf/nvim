@@ -1,6 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
-    events = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "williamboman/mason.nvim",
         "folke/neodev.nvim",
@@ -18,7 +18,6 @@ return {
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('n', '<space>vi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', '<A-r>', vim.lsp.buf.rename, opts)
             vim.keymap.set({ 'n', 'v' }, '<space>vc', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', '<space>vr', vim.lsp.buf.references, opts)
@@ -33,11 +32,11 @@ return {
             "cssls",
             "html",
             "jsonls",
-            "lemminx",
             "marksman",
             "tsserver",
             "yamlls",
-            "volar",
+            "phpactor",
+            "gopls"
         }
         for _, server in pairs(servers) do
             lspconfig[server].setup {
@@ -58,5 +57,14 @@ return {
                 }
             }
         })
+
+      lspconfig["volar"].setup({
+         on_attach = on_attach,
+         init_options = {
+            typescript = {
+               tsdk ="/home/usuario/.local/share/nvim-3/mason/packages/vue-language-server/node_modules/typescript/lib",
+            }
+         }
+      })
     end
 }

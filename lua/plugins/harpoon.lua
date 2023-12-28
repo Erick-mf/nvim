@@ -5,6 +5,7 @@ return {
         "nvim-lua/plenary.nvim"
     },
     config = function ()
+---@diagnostic disable-next-line: missing-parameter
         require("harpoon"):setup()
     end,
     keys = {
