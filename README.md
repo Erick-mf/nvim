@@ -1,1 +1,1 @@
-## Configuración mínima
+## Configuración para Neovim
