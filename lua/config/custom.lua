@@ -46,3 +46,30 @@ vim.notify = function(msg, ...)
     end
     return require("notify")(msg, ...)
 end
+
+local function agregar_plugin()
+    vim.ui.input({ prompt = "Nombre del archivo: " }, function(name)
+        if name == nil or name == "" then
+            return
+        end
+
+        vim.ui.input({ prompt = "Url del plugin: " }, function(url)
+            if url == nil or url == "" then
+                return
+            end
+
+            vim.cmd("e ~/.config/nvim-3/lua/plugins/" .. name .. ".lua")
+
+            local content = {
+                "return {",
+                "    " .. url,
+                "}"
+            }
+
+            vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
+            vim.api.nvim_win_set_cursor(0, { 2, 4 })
+        end)
+    end)
+end
+
+vim.keymap.set("n", "<leader>cp", agregar_plugin)
