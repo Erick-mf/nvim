@@ -1,6 +1,8 @@
 return {
     "gen740/SmoothCursor.nvim",
+    event = "VeryLazy",
     config = function()
+---@diagnostic disable-next-line: missing-fields
         require("smoothcursor").setup { cursor = "▷" }
 
         vim.api.nvim_set_hl(0, "SmoothCursor", { fg = "#668aab" })

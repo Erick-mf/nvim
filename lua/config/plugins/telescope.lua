@@ -1,20 +1,24 @@
 require("telescope").setup({
     defaults = {
         file_ignore_patterns = { "%.zip", "lazy-lock.json", "node_modules", "live-server", "vendor" },
-        layout_strategy = "flex",
+        layout_strategy = "vertical",
         layout_config = {
+            width = 0.6,
+            height = 0.85,
+            preview_cutoff = 1,
+            mirror = true,
             prompt_position = "top",
         },
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         scroll_strategy = "limit",
+        color_devicons = true,
         mappings = {
             n = {
                 ["<C-c>"] = "close",
                 ["<C-h>"] = "which_key",
             },
             i = {
-                ["<C-h>"] = "which_key",
                 ["<C-c>"] = "close",
             },
         },

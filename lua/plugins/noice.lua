@@ -38,17 +38,6 @@ return {
                 view = "notify",
                 filter = {
                     event = "notify",
-                    find = "Type  :qa!  and press <Enter> to abandon all changes and exit Nvim",
-
-                },
-                opts = {
-                    skip = true
-                }
-            },
-            {
-                view = "notify",
-                filter = {
-                    event = "notify",
                     find = "Type  :qa  and press <Enter> to exit Nvim"
 
                 },

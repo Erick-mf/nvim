@@ -7,7 +7,7 @@ return {
       local null_ls_utils = require("null-ls.utils")
 
       local formatting = null_ls.builtins.formatting
-      local diagnostics = null_ls.builtins.diagnostics
+      -- local diagnostics = null_ls.builtins.diagnostics
 
       null_ls.setup({
          -- add package.json as identifier for root (for typescript monorepos)
@@ -18,11 +18,11 @@ return {
             formatting.prettier.with({ extra_args = { config_file = "~/.prettierrc.json" } }),
 
             -- DIAGNOSTICS
-            diagnostics.eslint_d.with({
-               condition = function(utils)
-                  return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
-               end,
-            }),
+            -- diagnostics.eslint_d.with({
+            --    condition = function(utils)
+            --       return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+            --    end,
+            -- }),
          },
       })
    end,

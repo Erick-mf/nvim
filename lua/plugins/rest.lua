@@ -1,6 +1,7 @@
 return {
    "rest-nvim/rest.nvim",
    ft = "http",
+    tag="v1.2.0",
    dependencies = { "nvim-lua/plenary.nvim" },
    config = function()
       local rest_nvim = require "rest-nvim"

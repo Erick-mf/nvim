@@ -10,13 +10,13 @@ return {
         sections = {
             lualine_a = { { "mode", upper = true } },
             lualine_b = { { "branch", icon = "" }, "db_ui#statusline" },
-            lualine_c = { { "filename", file_status = false, path = 1 } },
+            lualine_c = { { "filename", file_status = false, path = 0 } },
             lualine_x = {
                 "diagnostics",
                 {
                     "diff",
                     symbols = {
-                        added = " ", modified = " ", removed = " "
+                        added = " ", modified = " ", removed = " ",
                     }
                 },
             },

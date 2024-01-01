@@ -8,6 +8,7 @@ return {
     "hrsh7th/cmp-git",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+    "onsails/lspkind-nvim",
     "windwp/nvim-autopairs",
   },
   event = "InsertEnter",

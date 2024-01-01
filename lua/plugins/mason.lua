@@ -1,7 +1,6 @@
 return {
     "williamboman/mason.nvim",
     cmd = "Mason",
-    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "jayp0521/mason-null-ls.nvim",
@@ -33,17 +32,18 @@ return {
                 "lua_ls",
                 "marksman",
                 "tsserver",
-                "yamlls",
                 "phpactor",
-                "gopls",
+                "jdtls",
+                "angularls",
             },
             automatic_installation = true,
         })
 
+        ---@diagnostic disable: missing-fields
         mason_null_ls.setup({
             ensure_installed = {
                 "prettier",
-                "eslint_d",
+                "eslint"
             },
             automatic_installation = true,
         })
