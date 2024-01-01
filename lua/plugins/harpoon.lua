@@ -9,7 +9,7 @@ return {
         require("harpoon"):setup()
     end,
     keys = {
-        {"<leader>sa", function() return require("harpoon"):list():append() end},
+        {"<leader>sa", function() require("harpoon"):list():append() end},
         {"<leader>ss", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end},
         {"<leader>1", function() require("harpoon"):list():select(1) end},
         {"<leader>2", function() require("harpoon"):list():select(2) end},

@@ -29,9 +29,13 @@ return {
             desc = "Telescope Git Files",
         },
         {
-            "<leader>gf",
+            "<leader>ff",
             function()
-                require('telescope.builtin').git_files({ show_untracked = true })
+                local opts = { show_untracked = true }
+                local ok = pcall(require('telescope.builtin').git_files, opts)
+                if not ok then
+                    require('telescope.builtin').find_files(opts)
+                end
             end,
             desc = "Telescope Git Files",
         },
@@ -54,7 +58,7 @@ return {
             function()
                 require('telescope.builtin').git_commits()
             end,
-            desc = "Telescope Find Files",
+            desc = "Git Commits",
         },
         {
             "<leader>fh",
@@ -66,13 +70,6 @@ return {
                 }
             end,
             desc = "Find hidden files"
-        },
-        {
-            "<leader>ff",
-            function()
-                require('telescope.builtin').find_files()
-            end,
-            desc = "Telescope Find Files",
         },
         {
             "<leader>fa",
@@ -101,7 +98,7 @@ return {
             end,
             desc = "Telescope file browser"
         },
-        { "<leader>tn", "<cmd>Telescope todo-comments keywords=TODO,NOTE<cr>",    desc = "Todos" },
-        { "<leader>tf", "<cmd>Telescope todo-comments keywords=FIX,BUG<cr>", desc = "Todo Fix" },
+        { "<leader>tn", "<cmd>Telescope todo-comments keywords=TODO,NOTE<cr>", desc = "Todos" },
+        { "<leader>tf", "<cmd>Telescope todo-comments keywords=FIX,BUG<cr>",   desc = "Todo Fix" },
     },
 }

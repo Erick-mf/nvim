@@ -17,15 +17,15 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 vim.diagnostic.config {
+    virtual_text = true,
     float = {
-        border = "rounded"
+        border = "single"
     },
-    virtual_text = true
 }
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
-    { border = 'rounded' }
+    { border = 'single' }
 )
 
 -- Change the Diagnostic symbols in the sign column (gutter)
@@ -35,8 +35,7 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-
-local banned_messages = { "No information available", "No signature help available"}
+local banned_messages = { "No information available", "No signature help available" }
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.notify = function(msg, ...)
     for _, banned in ipairs(banned_messages) do
@@ -68,8 +67,26 @@ local function agregar_plugin()
 
             vim.api.nvim_buf_set_lines(0, 0, -1, false, content)
             vim.api.nvim_win_set_cursor(0, { 2, 4 })
+            vim.notify("Archivo agregado")
         end)
     end)
 end
 
 vim.keymap.set("n", "<leader>cp", agregar_plugin)
+
+vim.api.nvim_create_user_command("Menu", function()
+    local options = { "option1", "option2", "option3" }
+    vim.ui.select(options, {
+        prompt = 'Select tabs or spaces:',
+        format_item = function(item)
+            return item
+        end,
+    }, function(choice)
+        for _, option in ipairs(options) do
+            if option == choice then
+                vim.notify("Selected " .. choice)
+            end
+        end
+    end)
+end, {}
+)

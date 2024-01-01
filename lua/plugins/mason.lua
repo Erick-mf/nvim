@@ -33,9 +33,9 @@ return {
                 "lua_ls",
                 "marksman",
                 "tsserver",
-                "yamlls",
+                "taplo",
                 "phpactor",
-                "gopls",
+                "jdtls",
             },
             automatic_installation = true,
         })

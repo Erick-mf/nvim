@@ -14,7 +14,7 @@ require("telescope").setup({
                 ["<C-h>"] = "which_key",
             },
             i = {
-                ["<C-h>"] = "which_key",
+                -- ["<C-h>"] = "which_key",
                 ["<C-c>"] = "close",
             },
         },

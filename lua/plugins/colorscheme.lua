@@ -8,7 +8,7 @@ return {
                 transparent = true,
                 styles = {
                     comments = {italic = true},
-                    keywords = {italic = true, bold = true},
+                    keywords = {italic = true},
                     floats = "transparent",
                 }
             })
@@ -17,6 +17,7 @@ return {
     },
     {
         "EdenEast/nightfox.nvim",
+        enabled = false,
         lazy = false,
         priority = 1000,
         config = function()

@@ -41,6 +41,8 @@ return {
                 i = {
                     ["<C-c>"] = "Close",
                     ["<CR>"] = "Confirm",
+                    ["<Up>"] = "HistoryPrev",
+                    ["<Down>"] = "HistoryNext",
                 },
             },
             override = function(conf)
