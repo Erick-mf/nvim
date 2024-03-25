@@ -34,7 +34,7 @@ return {
             "marksman",
             "tsserver",
             "phpactor",
-            "jdtls",
+            -- "jdtls",
             "angularls",
             "eslint",
         }

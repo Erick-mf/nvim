@@ -71,6 +71,19 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     { border = 'single' }
 )
 
+-- Disable semantic highlight
+local disable_semantic_highlight = function()
+    local compl = vim.fn.getcompletion("@lsp", "highlight")
+    for _, group in ipairs(compl) do
+        vim.api.nvim_set_hl(0, group, {})
+    end
+end
+vim.api.nvim_create_autocmd("ColorScheme", {
+    desc = "Disable semantic highlights",
+    callback = disable_semantic_highlight,
+})
+disable_semantic_highlight()
+
 -- Change the Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 for type, icon in pairs(signs) do
